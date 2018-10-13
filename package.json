@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ethereumjs-tx": "^1.3.7",
+    "node-infinito-api": "git+https://github.com/infinityblockchainlabs/node-infinito-api.git",
+    "node-infinito-wallet": "git+https://github.com/infinityblockchainlabs/node-infinito-wallet.git",
+    "watson-developer-cloud": "^3.12.0",
+    "web3": "^1.0.0-beta.35"
+  }
+}
