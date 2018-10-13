@@ -73,7 +73,7 @@ Router.get('/balance/:address', function(req,res){
       var toWei = Math.pow(10, 18);
       var balance = balance.toString(10);
       res.send({
-        balance: balance
+        balance: balance/toWei
       })
     })
   } catch(error) {
