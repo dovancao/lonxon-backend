@@ -67,9 +67,9 @@ Router.post('/open-wallet', function(req, res){
     }
 })
 
-Router.get('/balance', function(req,res){
+Router.get('/balance/:address', function(req,res){
   try {
-    LoyaSolc.methods.balanceOf(req.body.address).call().then((balance) => {
+    LoyaSolc.methods.balanceOf(req.params.address).call().then((balance) => {
       var toWei = Math.pow(10, 18);
       var balance = balance.toString(10);
       res.send({
