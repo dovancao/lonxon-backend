@@ -13,7 +13,6 @@ const opts = {
      secret: 'dPdqS8KrjwAheOdh7FhnGyPTIxebDrLZ0rBbEypJuFiGroTvNAzFUwCTaqiRjSjb',
      baseUrl: 'https://staging-api-testnet.infinitowallet.io',
      logLevel: 'NONE',
-     version: v1
  };
  const api = new InfinitoApi(opts);
  const coinAPI = api.ETH;
@@ -29,8 +28,6 @@ let apiConfig = {
   logLevel: 'NONE'
 }
 
-// set infinito api
-let api = new InfinitoApi(apiConfig)
 
 let Router = express.Router();
 
@@ -87,7 +84,7 @@ Router.get('/balance/:address', function(req,res){
     //     balance: balance/toWei
     //   })
     // })
-    const result = await coinAPI.getBalance(req.params.address);
+    const result = coinAPI.getBalance(req.params.address);
     return res.send(result.data.balance)
   } catch(error) {
 
@@ -96,7 +93,7 @@ Router.get('/balance/:address', function(req,res){
 
 Router.get('/transaction/:address', function(req,res){
   try {
-    const result = await coinAPI.getTxAddress(req.params.address);
+    const result = coinAPI.getTxAddress(req.params.address);
     res.send({data: result.data.transactions})
   } catch (error) {
     res.send(error)
