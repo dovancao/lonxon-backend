@@ -8,6 +8,16 @@ const keccak256 = require('js-sha3').keccak256;
 const { EthWallet,CoinType, InfinitoApi } = require('node-infinito-wallet');
 const web3 = new Web3(defaultConfig.url);
 const SmartContractAddress = '0x0e6bd10385c4b9c04687623e35569b7d5423b327';
+const InfinitoApi = require('node-infinito-api');
+const opts = {
+     apiKey: '28922118-c15d-4694-8836-b9ab18741e37',
+     secret: 'dPdqS8KrjwAheOdh7FhnGyPTIxebDrLZ0rBbEypJuFiGroTvNAzFUwCTaqiRjSjb',
+     baseUrl: 'https://staging-api-testnet.infinitowallet.io',
+     logLevel: 'NONE',
+     version: v1
+ };
+ const api = new InfinitoApi(opts);
+ const coinAPI = api.ETH;
 
 //loyajson
 const LoyaSolcJson = require('../../../contracts/build/contracts/LoyaToken.json')
@@ -70,15 +80,27 @@ Router.post('/open-wallet', function(req, res){
 
 Router.get('/balance/:address', function(req,res){
   try {
-    LoyaSolc.methods.balanceOf(req.params.address).call().then((balance) => {
-      var toWei = Math.pow(10, 18);
-      var balance = balance.toString(10);
-      res.send({
-        balance: balance/toWei
-      })
-    })
+
+    // LoyaSolc.methods.balanceOf(req.params.address).call().then((balance) => {
+    //   var toWei = Math.pow(10, 18);
+    //   var balance = balance.toString(10);
+    //   res.send({
+    //     balance: balance/toWei
+    //   })
+    // })
+    const result = await coinAPI.getBalance(req.params.address);
+    return res.send(result.data.balance)
   } catch(error) {
 
+  }
+})
+
+Router.get('./transaction/:address', function(req,res){
+  try {
+    const result = await coinAPI.getTxAddress(req.params.address);
+    res.send({data: result.data.transactions})
+  } catch (error) {
+    res.send(error)
   }
 })
 
