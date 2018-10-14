@@ -95,7 +95,7 @@ Router.get('/balance/:address', function(req,res){
   }
 })
 
-Router.get('./transaction/:address', function(req,res){
+Router.get('/transaction/:address', function(req,res){
   try {
     const result = await coinAPI.getTxAddress(req.params.address);
     res.send({data: result.data.transactions})
