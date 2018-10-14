@@ -24,8 +24,8 @@ const LoyaSolcJson = require('../../../contracts/build/contracts/LoyaToken.json'
 const LoyaSolc = new web3.eth.Contract(LoyaSolcJson.abi, LoyaSolcJson.networks[NETWORK].address);
 // api config
 let apiConfig = {
-  apiKey: 'test',
-  secret: '123456',
+  apiKey: '28922118-c15d-4694-8836-b9ab18741e37',
+  secret: 'dPdqS8KrjwAheOdh7FhnGyPTIxebDrLZ0rBbEypJuFiGroTvNAzFUwCTaqiRjSjb',
   baseUrl: 'https://staging-api-testnet.infinitowallet.io',
   logLevel: 'NONE'
 }
@@ -112,8 +112,8 @@ Router.get('/transfer/:to/:amount', function(req,res){
   }
 
   let apiConfig = {
-    apiKey: 'test',
-    secret: '123456',
+    apiKey: '28922118-c15d-4694-8836-b9ab18741e37',
+    secret: 'dPdqS8KrjwAheOdh7FhnGyPTIxebDrLZ0rBbEypJuFiGroTvNAzFUwCTaqiRjSjb',
     baseUrl: 'https://staging-api-testnet.infinitowallet.io',
     logLevel: 'NONE'
   }
