@@ -85,7 +85,7 @@ Router.get('/balance/:address', function(req,res){
     //   })
     // })
     const result = coinAPI.getBalance(req.params.address);
-    return res.send({balance: result.data.balance})
+   res.send({balance: result.data.balance})
   } catch(error) {
 
   }
