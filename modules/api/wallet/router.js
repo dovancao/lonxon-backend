@@ -8,7 +8,6 @@ const keccak256 = require('js-sha3').keccak256;
 const { EthWallet,CoinType, InfinitoApi } = require('node-infinito-wallet');
 const web3 = new Web3(defaultConfig.url);
 const SmartContractAddress = '0x0e6bd10385c4b9c04687623e35569b7d5423b327';
-const InfinitoApi = require('node-infinito-api');
 const opts = {
      apiKey: '28922118-c15d-4694-8836-b9ab18741e37',
      secret: 'dPdqS8KrjwAheOdh7FhnGyPTIxebDrLZ0rBbEypJuFiGroTvNAzFUwCTaqiRjSjb',
