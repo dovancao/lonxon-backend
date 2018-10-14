@@ -7,6 +7,7 @@ const ec = new EC('secp256k1');
 const keccak256 = require('js-sha3').keccak256;
 const { EthWallet,CoinType, InfinitoApi } = require('node-infinito-wallet');
 const web3 = new Web3(defaultConfig.url);
+const SmartContractAddress = '0x0e6bd10385c4b9c04687623e35569b7d5423b327';
 
 //loyajson
 const LoyaSolcJson = require('../../../contracts/build/contracts/LoyaToken.json')
@@ -78,6 +79,32 @@ Router.get('/balance/:address', function(req,res){
     })
   } catch(error) {
 
+  }
+})
+
+//call transfer from smart contract
+Router.get('/transfer/:to/:amount', function(req,res){
+  let walletConfig = {
+    coinType: CoinType.ETH.symbol, 
+    isTestNet: true,
+  }
+
+  let apiConfig = {
+    apiKey: 'test',
+    secret: '123456',
+    baseUrl: 'https://staging-api-testnet.infinitowallet.io',
+    logLevel: 'NONE'
+  }
+
+  let api = new InfinitoApi(apiConfig);
+  let wallet = new EthWallet(walletConfig);
+  wallet.setApi(api);
+
+  try {
+    let result = wallet.transfer(SmartContractAddress, req.params.to , req.params.amount);
+    res.status(200).send(result)
+  } catch (error) {
+    console.log(error)
   }
 })
 
